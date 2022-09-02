@@ -1,5 +1,4 @@
 output "eks_cluster_properties" {
-  type = "map"
   value = {
     eks_cluster_name            = aws_eks_cluster.test_cluster.name
     eks_endpoint                = aws_eks_cluster.test_cluster.endpoint
