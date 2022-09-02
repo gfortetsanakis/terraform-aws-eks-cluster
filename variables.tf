@@ -2,12 +2,8 @@ variable "subnet_ids" {
   description = "The ids of the VPC subnets at which the eks cluster will be created."
 }
 
-variable "eks_worker_nodes_key_name" {
-  description = "The name of the ssh key used to connect to the worker nodes of the eks cluster."
-}
-
 variable "eks_worker_nodes_key_path" {
-  description = "The path to the file containing the public ssh key for the worker nodes."
+  description = "The path to the file containing the public ssh key installed on the worker nodes for connecting via ssh."
 }
 
 variable "eks_node_groups" {

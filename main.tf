@@ -50,7 +50,7 @@ resource "aws_eks_cluster" "test_cluster" {
 }
 
 resource "aws_key_pair" "eks_worker_nodes_key" {
-  key_name   = var.eks_worker_nodes_key_name
+  key_name   = "eks-worker-nodes"
   public_key = file(var.eks_worker_nodes_key_path)
 }
 
