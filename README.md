@@ -43,11 +43,20 @@ eks_node_groups = {
 
 | Parameter                   | Description                                                               |
 | --------------------------- | ------------------------------------------------------------------------- |
-| eks_endpoint                | The endpoint used for connecting to the EKS cluster                       |
-| eks_cluster_ca_cert         | The certificate of the internal certificate authority of the cluster      |
-| eks_cluster_name            | The name of the cluster                                                   |
-| openid_connect_provider_arn | The ARN of the OpenID connect provider of the cluster                     |
-| openid_connect_provider_url | The URL of the OpenID connect provider of the cluster                     |
-| eks_cluster_sg_id           | The id of the security group attached to the nodes of the cluster         |
+| eks_cluster_properties      | A map output variable containing properties of the created EKS cluster    |
 
+The structure of the output variable "eks_cluster_properties" is as follows:
 
+```
+
+eks_cluster_properties = {
+  eks_cluster_name            = <The name of the EKS cluster>
+  eks_endpoint                = <The endpoint for connecting to the cluster>
+  eks_cluster_ca_cert         = <The certificate of the internal certificate authority of the EKS cluster>
+  openid_connect_provider_arn = <ARN of OpenID connect provider of EKS cluster>
+  openid_connect_provider_url = <URL of OpenID connect provider of EKS cluster>
+  subnet_ids                  = <IDs of the VPC subnets on which the EKS cluster is installed>
+  eks_cluster_sg_id           = <ID of the security group created for the worker nodes of the EKS cluster>
+  vpc_id                      = <ID of the VPC on which the EKS cluster is deployed>  
+}
+```
