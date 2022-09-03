@@ -93,6 +93,19 @@ resource "aws_eks_node_group" "eks_group" {
   ]
 }
 
+resource "aws_autoscaling_group_tag" "node_group_tag" {
+  for_each = aws_eks_node_group.eks_group
+
+  autoscaling_group_name = each.value.resources[0].autoscaling_groups[0].name
+
+  tag {
+    key   = "k8s.io/cluster-autoscaler/node-template/label/eks.amazonaws.com/nodegroup"
+    value = each.key
+
+    propagate_at_launch = false
+  }
+}
+
 data "tls_certificate" "eks_cluster" {
   url = aws_eks_cluster.test_cluster.identity.0.oidc.0.issuer
 }
